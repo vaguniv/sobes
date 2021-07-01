@@ -2,10 +2,10 @@
 
 ## Общее (10 мин)
 
-* Какую роль вы выполняли в последнем проекте? Что делала остальная команда? Что нравится или не нравится на этом месте?
+* Какую роль ты выполнял в последнем проекте? Что делала остальная команда? Что нравится или не нравится на этом месте?
 * Расскажите о сложностях в работе над проектом. Как их решали?
 * Есть ли собственный проект? Что в нем интересного?
-* Что вас мотивирует в работе? А что демотивирует?
+* Что тебя мотивирует в работе? А что демотивирует?
 
 ## Архитектурные вопросы (30 мин)
 
@@ -268,7 +268,7 @@ class AppServiceProvider extends ServiceProvider
 Что делают следующие команды:
 
 * chmod, chown
-* curl, wgen, nc
+* curl, wget, nc
 * ping, traceroute, dig, nslookup
 * docker, docker-compose  
 * strace
@@ -324,3 +324,48 @@ class AppServiceProvider extends ServiceProvider
 ### (1 мин)
 
 В каком месте хранится список пользователей с их базовыми настройками?
+
+### (5 мин)
+
+Есть таблица заказов:
+
+```
+SELECT * FROM orders;
++----+--------+
+| id | state  |
++----+--------+
+|  1 | open   |
+|  2 | close  |
+|  3 | close  |
+|  4 | active |
++----+--------+
+```
+
+Как отсортировать эти данные в порядке статусов `open`, `active`, `close`, то есть получить такие данные?
+
+```
+SELECT ...
++----+--------+
+| id | state  |
++----+--------+
+|  4 | active |
+|  1 | open   |
+|  2 | close  |
+|  3 | close  |
++----+--------+
+```
+
+PS.
+
+```sql
+CREATE TABLE orders
+(
+    id    int unsigned auto_increment,
+    state varchar(255) not null,
+    primary key (id)
+);
+INSERT INTO orders VALUES (default, 'open');
+INSERT INTO orders VALUES (default, 'close');
+INSERT INTO orders VALUES (default, 'close');
+INSERT INTO orders VALUES (default, 'active');
+```
