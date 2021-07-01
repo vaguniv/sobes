@@ -146,7 +146,7 @@ function foo(&$r)
 }
 
 $r = 1;
-foo(foo(&$r));
+foo(foo($r));
 
 echo $r;
 ```
