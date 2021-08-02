@@ -19,6 +19,7 @@
 * CRUD, ACID
 * ORM, ODM  
 * MVC, MVVM
+* OLAP
 
 ### 1. (5 мин)
 
@@ -28,7 +29,10 @@
 
 ### 2. (5 мин)
 
-Нужно сделать страницу котировок с он-лайн обновлением данных. Как бы ты ее сделал?
+Есть микросервис управления пользователями и авторизации. В нем все пользователи привязаны к группам. 
+Также есть микросервис коротких ссылок, имеющий свою базу данных. При создании короткой ссылки, передается группа,
+чтобы привязать к ней ссылку, и пользователи этой же группы имели возможность видеть эту ссылку.
+Нужно синхронизировать группы этих микросервисов. Как бы ты это сделал?
 
 ### 3. (5 мин)
 
@@ -45,87 +49,65 @@
 
 ### 4. (5 мин)
 
-На сайте есть страница типа FAQ https://www.uralsib.ru/faq/personal/kreditnye-karty/kk-cashback
+Я ввел `telnet www.baidu.com 80` и получил такой ответ. Из каких частей он состоит и что рассказывает?
 
-Фронтовая часть запрашивает содержимое страницы по REST API. Как это реализовать в терминах REST?
-
-* Транспортный протокол
-* Формат данных
-* Метод
-* Ресурс
-* URI
-
-### 5. (5 мин)
-
-Ты знаком с микросервисной архитектурой? Как могут взаимодействовать МС между собой?
-
-### 6. (5 мин)
-
-Я ввел `curl -v https://uralsib.ru`. Из каких частей состоит и что рассказывает этот лог?  
+https://speed24.ru/q/sh_0573.png
 
 ```
-*   Trying 193.109.114.7:443...
-* TCP_NODELAY set
-* Connected to uralsib.ru (193.109.114.7) port 443 (#0)
-* ALPN, offering h2
-* ALPN, offering http/1.1
-* successfully set certificate verify locations:
-*   CAfile: /etc/ssl/certs/ca-certificates.crt
-    CApath: /etc/ssl/certs
-* TLSv1.3 (OUT), TLS handshake, Client hello (1):
-* TLSv1.3 (IN), TLS handshake, Server hello (2):
-* TLSv1.2 (IN), TLS handshake, Certificate (11):
-* TLSv1.2 (IN), TLS handshake, Server key exchange (12):
-* TLSv1.2 (IN), TLS handshake, Server finished (14):
-* TLSv1.2 (OUT), TLS handshake, Client key exchange (16):
-* TLSv1.2 (OUT), TLS change cipher, Change cipher spec (1):
-* TLSv1.2 (OUT), TLS handshake, Finished (20):
-* TLSv1.2 (IN), TLS handshake, Finished (20):
-* SSL connection using TLSv1.2 / ECDHE-RSA-AES128-GCM-SHA256
-* ALPN, server did not agree to a protocol
-* Server certificate:
-*  subject: C=RU; ST=Republic of Bashkortostan; L=Ufa; O=Public joint stock company BANK URALSIB; CN=*.uralsib.ru
-*  start date: Nov 30 00:00:00 2020 GMT
-*  expire date: Dec 30 23:59:59 2021 GMT
-*  subjectAltName: host "uralsib.ru" matched cert's "uralsib.ru"
-*  issuer: C=US; O=DigiCert Inc; OU=www.digicert.com; CN=Thawte RSA CA 2018
-*  SSL certificate verify ok.
-> GET / HTTP/1.1
-> Host: uralsib.ru
-> User-Agent: curl/7.68.0
-> Accept: */*
->
-* Mark bundle as not supporting multiuse
-  < HTTP/1.1 301 Moved Permanently
-  < Date: Wed, 30 Jun 2021 23:48:30 GMT
-  < Content-Type: text/html
-  < Content-Length: 162
-  < Connection: keep-alive
-  < Location: https://www.uralsib.ru/
-  < Strict-Transport-Security: max-age=31536000
-  < Set-Cookie: TS01389dea=0131b76752acbab92584644c5fecf3d13477443d43908e93e4f7e1ebbee9f63e3a215e7eafd886699c239d3ca55b8b8ae988a2c6d5; Path=/; Domain=.uralsib.ru
-  <
-<html>
-<head><title>301 Moved Permanently</title></head>
-<body>
-<center><h1>301 Moved Permanently</h1></center>
-<hr><center>nginx</center>
-</body>
-</html>
-* Connection #0 to host uralsib.ru left intact
+$ telnet www.baidu.com 80
+Trying 103.235.46.39...
+Connected to www.wshifen.com.
+Escape character is '^]'.
+GET / HTTP/1.1
+Host: www.baidu.com
+User-Agent: hacker
+Accept: */*
+
+HTTP/1.1 200 OK
+Bdpagetype: 1
+Bdqid: 0xd1090c79000012b0
+Cache-Control: private
+Connection: keep-alive
+Content-Type: text/html;charset=utf-8
+Date: Mon, 02 Aug 2021 06:07:26 GMT
+Expires: Mon, 02 Aug 2021 06:06:48 GMT
+P3p: CP=" OTI DSP COR IVA OUR IND COM "
+P3p: CP=" OTI DSP COR IVA OUR IND COM "
+Server: BWS/1.1
+Set-Cookie: BAIDUID=6A487A8AA2C26ADC6466ECC89FD2E35B:FG=1; expires=Thu, 31-Dec-37 23:55:55 GMT; max-age=2147483647; path=/; domain=.baidu.com
+Set-Cookie: BIDUPSID=6A487A8AA2C26ADC6466ECC89FD2E35B; expires=Thu, 31-Dec-37 23:55:55 GMT; max-age=2147483647; path=/; domain=.baidu.com
+Set-Cookie: PSTM=1627884446; expires=Thu, 31-Dec-37 23:55:55 GMT; max-age=2147483647; path=/; domain=.baidu.com
+Set-Cookie: BAIDUID=6A487A8AA2C26ADCDD74E46EB04767A2:FG=1; max-age=31536000; expires=Tue, 02-Aug-22 06:07:26 GMT; domain=.baidu.com; path=/; version=1; comment=bd
+Set-Cookie: BDSVRTM=0; path=/
+Set-Cookie: BD_HOME=1; path=/
+Set-Cookie: H_PS_PSSID=34300_34099_33969_34334_34370_34144_34375_34004_34092_34111_26350_34242; path=/; domain=.baidu.com
+Traceid: 1627884446046251853815062584142547915440
+Vary: Accept-Encoding
+Vary: Accept-Encoding
+X-Frame-Options: sameorigin
+X-Ua-Compatible: IE=Edge,chrome=1
+Transfer-Encoding: chunked
+
+b10
+<!DOCTYPE html><!--STATUS OK-->
+
+
+    <html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta content="always" name="referrer"><meta name="theme-color" content="#2932e1"><meta name="description" content="全球领先的中文搜索引擎、致力于让网民更便捷地获取信息，找到所求。百度超过
 ```
 
 ## Базы данных (10 мин)
 
 ### 1. (5 мин)
 
-* С какими базами данных ты работал? Какую базу ты бы рекомендовал использовать и почему?
-* Как можно организовать поиск текстовой информации по БД?
+* Зачем нужны индексы? Какие типы индексов ты знаешь?
+* Как можно организовать поиск сайту?
 * Сервер БД перегружен. Как можно выяснить причину нагрузки и что-то с этим сделать?
 
 ### 2. (5 мин)
 
-Допустим, есть 2 банковских счета. Нужно перевести 200 рублей с первого счета на второй.  
+Допустим, есть 2 банковских счета. Нужно перевести 200 рублей с первого счета на второй.
+
+https://speed24.ru/q/sh_0580.png
 
 ```
 mysql> select * from bank_account;
@@ -143,7 +125,7 @@ mysql> select * from bank_account;
 
 ### 0. (5 мин)
 
-Какие языки программирования ты знаешь, что в них нравится, а что нет? Какой самый лучший язык?
+Что тебе нравится, а что нет в PHP? Что бы ты добавил в язык?
 
 ### 1. (3 мин)
 
@@ -160,9 +142,13 @@ mysql> select * from bank_account;
 
 ### 4. (5 мин)
 
-В запросе `$_GET['user_ids']` должна приходить строка с номерами пользователей через запятую, например: 1,2,17,48.
+Недавно мне потребовалось вывести ссылки на профили пользователей. Я загуглил и нашел такой ответ на StackOverflow.
 
-Оцени качество кода. Что бы ты исправил?
+Что ты можешь сказать про этот код?
+
+https://speed24.ru/q/sh_0575.png
+
+Вам нужно получить данные по каждому пользователю, и затем показать результаты на странице. Как-то так:
 
 ```php
 <?php
@@ -191,7 +177,7 @@ foreach ($data as $user_id => $name) {
 
 ### 1. (2 мин)
 
-У нас есть микросервис авторизации. Нужно быстро посмотреть, сколько в нем сейчас пользователей. Как это сделать?
+У нас есть микросервис авторизации. Нужно быстро посмотреть общее количество пользователей в базе. Как это сделать?
 
 ### 2. (3 мин)
 
@@ -206,6 +192,8 @@ foreach ($data as $user_id => $name) {
 Что такое Service Container и зачем он нужен? Зачем нужен Observer (наблюдатель)?
 
 Поясни, что делает этот код:
+
+https://speed24.ru/q/sh_0577.png
 
 ```php
 <?php
@@ -253,11 +241,9 @@ class AppServiceProvider extends ServiceProvider
 
 Сколько километров пролетела муха?
 
+https://speed24.ru/q/muha.jpg
+
 ![Муха и велосипедисты](assets/muha.jpg)
-
-### 3. (5 мин)
-
-Что ты можешь рассказать про B-Tree?
 
 ## Инструменты, командная строка и Linux (11 мин)
 
@@ -282,18 +268,30 @@ class AppServiceProvider extends ServiceProvider
 
 ### 3. (3 мин)
 
+Объясни, что делает эта команда:
+
+https://speed24.ru/q/sh_0579.png
+
+```bash
+docker run -it --rm `docker-compose build laravel-app | awk '/Successfully tagged/{ print $$3 }'` sh -c 'composer test'
+```
+
+### 4. (3 мин)
+
 Есть файл `srs.xml` с такой структурой
+
+https://speed24.ru/q/sh_0578.png
 
 ```xml
 <?xml version="1.0" encoding="windows-1251"?>
 <Offices>
     <BankOffice id="4">
-        <Title>Операционный офис "Череповец" Филиала ПАО "БАНК УРАЛСИБ" в г.Санкт-Петербург</Title>
+        <Title>Операционный офис "Череповец" Филиала ПАО "БАНК УРАЛСИБ"</Title>
         <INN>0274062111</INN>
         <City>Череповец</City>
     </BankOffice>
     <BankOffice id="12">
-        <Title>Отделение "Выборгское" Филиала ПАО "БАНК УРАЛСИБ" в г.Санкт-Петербург</Title>
+        <Title>Отделение "Выборгское" Филиала ПАО "БАНК УРАЛСИБ"</Title>
         <INN>0274062111</INN>
         <City>Санкт-Петербург</City>
     </BankOffice>
@@ -302,70 +300,3 @@ class AppServiceProvider extends ServiceProvider
 
 Как быстро посчитать общее количество городов?
 
-## Дополнительные вопросы
-
-### (5 мин)
-
-Ты ввел в строку браузера сайт uralsib.ru и нажал Enter. Расскажи о процессах, которые произойдут дальше.
-
-### (5 мин)
-
-У нас есть деление на фронт и бек. Ты разработал REST-сервис. Чтобы ты сделал для того, чтобы даже джун-фронтенд смог
-начать с ним работать?
-
-### (5 мин)
-
-Для чего нужны шаблонизаторы и какие из них ты использовал?
-
-### (5 мин)
-
-Какие ORM ты использовал? Для чего они нужны?
-
-### (1 мин)
-
-В каком месте хранится список пользователей с их базовыми настройками?
-
-### (5 мин)
-
-Есть таблица заказов:
-
-```
-SELECT * FROM orders;
-+----+--------+
-| id | state  |
-+----+--------+
-|  1 | open   |
-|  2 | close  |
-|  3 | close  |
-|  4 | active |
-+----+--------+
-```
-
-Как отсортировать эти данные в порядке статусов `open`, `active`, `close`, то есть получить такие данные?
-
-```
-SELECT ...
-+----+--------+
-| id | state  |
-+----+--------+
-|  4 | active |
-|  1 | open   |
-|  2 | close  |
-|  3 | close  |
-+----+--------+
-```
-
-PS.
-
-```sql
-CREATE TABLE orders
-(
-    id    int unsigned auto_increment,
-    state varchar(255) not null,
-    primary key (id)
-);
-INSERT INTO orders VALUES (default, 'open');
-INSERT INTO orders VALUES (default, 'close');
-INSERT INTO orders VALUES (default, 'close');
-INSERT INTO orders VALUES (default, 'active');
-```
