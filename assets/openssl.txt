@@ -1,0 +1,107 @@
+$ openssl s_client -connect uralsib.ru:443
+CONNECTED(00000003)
+depth=2 C = US, O = DigiCert Inc, OU = www.digicert.com, CN = DigiCert Global Root CA
+verify return:1
+depth=1 C = US, O = DigiCert Inc, OU = www.digicert.com, CN = Thawte RSA CA 2018
+verify return:1
+depth=0 C = RU, ST = Republic of Bashkortostan, L = Ufa, O = Public joint stock company BANK URALSIB, CN = *.uralsib.ru
+verify return:1
+---
+Certificate chain
+ 0 s:C = RU, ST = Republic of Bashkortostan, L = Ufa, O = Public joint stock company BANK URALSIB, CN = *.uralsib.ru
+   i:C = US, O = DigiCert Inc, OU = www.digicert.com, CN = Thawte RSA CA 2018
+ 1 s:C = US, O = DigiCert Inc, OU = www.digicert.com, CN = Thawte RSA CA 2018
+   i:C = US, O = DigiCert Inc, OU = www.digicert.com, CN = DigiCert Global Root CA
+ 2 s:C = US, O = DigiCert Inc, OU = www.digicert.com, CN = DigiCert Global Root CA
+   i:C = US, O = DigiCert Inc, OU = www.digicert.com, CN = DigiCert Global Root CA
+---
+Server certificate
+-----BEGIN CERTIFICATE-----
+MIIGGjCCBQKgAwIBAgIQDAfhSZihgvtPmLFhmCaiIzANBgkqhkiG9w0BAQsFADBc
+MQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3
+d3cuZGlnaWNlcnQuY29tMRswGQYDVQQDExJUaGF3dGUgUlNBIENBIDIwMTgwHhcN
+MjAxMTMwMDAwMDAwWhcNMjExMjMwMjM1OTU5WjCBiDELMAkGA1UEBhMCUlUxIjAg
+BgNVBAgTGVJlcHVibGljIG9mIEJhc2hrb3J0b3N0YW4xDDAKBgNVBAcTA1VmYTEw
+MC4GA1UEChMnUHVibGljIGpvaW50IHN0b2NrIGNvbXBhbnkgQkFOSyBVUkFMU0lC
+MRUwEwYDVQQDDAwqLnVyYWxzaWIucnUwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAw
+ggEKAoIBAQCupnJv37GjNH+vlFQrpajkJUDXBXGHIzmqJ4GLTBGmQlbEoALjkG15
+aeU92eFc6VbvOQF+LCK28iDmnhSiFDZOLh+Z6MiMpEWQTTdEpQnGMetN5EQk3YEv
+mBtjYiXRYgYTfBT6fvPuDKrIdjkLCB+hfcmPppOXT6NDdMLn8Je8cEaoUdaVY+40
+RA6LWNc7c8hwpCZBKF4hLgTmQdDvTPghiRZzcmRJeOR1Uj82gX8a/yW4N/gGDcxZ
+gqbRxtn8q/30RloPWWdSg1I9oTvSFCG7++AZcQfk+e2G9oatXSCa6vRv/6F3W1M4
+teXUceRi/7aFefhRk5ykL+Gij2Rf67fFAgMBAAGjggKpMIICpTAfBgNVHSMEGDAW
+gBSjyF5lVOUweMEF6gcKalnMuf7eWjAdBgNVHQ4EFgQUcXYZHqZE0UjdZlfKajz8
+mUpP9PMwIwYDVR0RBBwwGoIMKi51cmFsc2liLnJ1ggp1cmFsc2liLnJ1MA4GA1Ud
+DwEB/wQEAwIFoDAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwOgYDVR0f
+BDMwMTAvoC2gK4YpaHR0cDovL2NkcC50aGF3dGUuY29tL1RoYXd0ZVJTQUNBMjAx
+OC5jcmwwTAYDVR0gBEUwQzA3BglghkgBhv1sAQEwKjAoBggrBgEFBQcCARYcaHR0
+cHM6Ly93d3cuZGlnaWNlcnQuY29tL0NQUzAIBgZngQwBAgIwbwYIKwYBBQUHAQEE
+YzBhMCQGCCsGAQUFBzABhhhodHRwOi8vc3RhdHVzLnRoYXd0ZS5jb20wOQYIKwYB
+BQUHMAKGLWh0dHA6Ly9jYWNlcnRzLnRoYXd0ZS5jb20vVGhhd3RlUlNBQ0EyMDE4
+LmNydDAMBgNVHRMBAf8EAjAAMIIBBAYKKwYBBAHWeQIEAgSB9QSB8gDwAHYA9lyU
+L9F3MCIUVBgIMJRWjuNNExkzv98MLyALzE7xZOMAAAF2F17XjAAABAMARzBFAiEA
+tN5c20zo18cPatTVJNac7aUXLQ6DIAavuDP8axDeTZICIHEwUIlHORyqzhEsBOiS
+/C2TA4wh1K3E+TUJRWuDUlvaAHYAXNxDkv7mq0VEsV6a1FbmEDf71fpH3KFzlLJe
+5vbHDsoAAAF2F17X6gAABAMARzBFAiEA2yBb2zIPOJQPdXYshe0GY9xTfNMa/T/M
+yhw1GNX8AWICIEfouTXUSnFhF7rWhJrS5y+ojZU3sVZZcKc//Xm9FWvCMA0GCSqG
+SIb3DQEBCwUAA4IBAQCv0koDQYor/zkrlYCW0qy+eSDuQwjuE5rfb6jrEhv+IV7T
+PipWmG3Mf9U+GBm72Gk+g0NkkcqXyL/JqVUoJbjnWhnIR2SJdqH8zRV+kXNjqc13
+2U/ytHwYHII/UxdOJR0R8qiAjn9phlin94aczk+w8SadiKoy97u5KBk+oZ9BIUpy
+VVtsLFcizrLsVZVT11/JJhgYuLYMzMEQ6RYHuTfI8Fzt/a2+t2pT38lJEleQrd9d
+qaUEyuNM+B6bqHaGgBiKRj47qL8igpSQVOtD0H0nS5RMPjAkUfESjgi73RihRJGh
+lbTJQucY7zTqkpUPrUaY/OX4Ew62PqbIG6wdhnBo
+-----END CERTIFICATE-----
+subject=C = RU, ST = Republic of Bashkortostan, L = Ufa, O = Public joint stock company BANK URALSIB, CN = *.uralsib.ru
+
+issuer=C = US, O = DigiCert Inc, OU = www.digicert.com, CN = Thawte RSA CA 2018
+
+---
+No client certificate CA names sent
+Peer signing digest: SHA256
+Peer signature type: RSA
+Server Temp Key: ECDH, P-256, 256 bits
+---
+SSL handshake has read 4193 bytes and written 428 bytes
+Verification: OK
+---
+New, TLSv1.2, Cipher is ECDHE-RSA-AES128-GCM-SHA256
+Server public key is 2048 bit
+Secure Renegotiation IS supported
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+SSL-Session:
+    Protocol  : TLSv1.2
+    Cipher    : ECDHE-RSA-AES128-GCM-SHA256
+    Session-ID: 0AE0CCBBDFA4C01EF2A828E145ED68A4F0305E761AD93792F03149B2167DB8B7
+    Session-ID-ctx:
+    Master-Key: EE9FB86D1A68BCC514D088D84A76B52E5AAA8A7670C1E6F747BA02023C52D0EEF60446905F995C5B762B3F32B1723174
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    Start Time: 1628240418
+    Timeout   : 7200 (sec)
+    Verify return code: 0 (ok)
+    Extended master secret: yes
+---
+GET / HTTP/1.1
+Host: uralsib.ru
+User-Agent: hacker
+Accept: */*
+
+HTTP/1.1 301 Moved Permanently
+Date: Fri, 06 Aug 2021 09:01:00 GMT
+Content-Type: text/html
+Content-Length: 162
+Connection: keep-alive
+Location: https://www.uralsib.ru/
+Strict-Transport-Security: max-age=31536000
+Set-Cookie: TS01389dea=0131b76752c870edb80fdd9e5d8d79eb56e8b7bdb6740515a44b6ef444e251e5c9635d12a072c090b48d99930136e0f46a91b8baf6; Path=/; Domain=.uralsib.ru
+
+<html>
+<head><title>301 Moved Permanently</title></head>
+<body>
+<center><h1>301 Moved Permanently</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
