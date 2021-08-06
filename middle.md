@@ -40,6 +40,10 @@
 
 ### 2. (2 мин)
 
+https://speed24.ru/q/sh_0606.png
+
+В базе есть такие данные:
+
 ```
 SELECT * FROM data;
 +------+
@@ -50,11 +54,17 @@ SELECT * FROM data;
 |    2 |
 | NULL |
 +------+
+
+SELECT AVG(val) FROM data;
+
+???
 ```
 
 Что выведет запрос `SELECT AVG(val) FROM data`?
 
 ### 3. (5 мин)
+
+https://speed24.ru/q/sh_0605.png
 
 Есть 2 таблицы:
 
